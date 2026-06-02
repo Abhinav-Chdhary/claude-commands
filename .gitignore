@@ -1,0 +1,6 @@
+.DS_Store
+
+# Output dirs these commands generate when run
+Reviews/
+Reports/
+Plans/
