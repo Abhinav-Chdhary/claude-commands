@@ -12,30 +12,56 @@ A small collection of custom [Claude Code](https://docs.anthropic.com/en/docs/cl
 
 ## Install
 
-Clone anywhere, then symlink the commands into your Claude Code commands directory:
+Claude Code reads slash commands from Markdown files in a `commands/` directory —
+`~/.claude/commands/` for personal (user-scope) commands available in **every**
+session, or a project's `.claude/commands/` for commands scoped to **one** repo.
+Installing these is just a matter of getting the `.md` files into one of those folders.
+
+**Prerequisite:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed.
+
+### Option A — symlink (recommended)
+
+Links the files so a `git pull` here instantly updates your installed commands.
 
 ```bash
+# 1. Clone this repo anywhere you like
 git clone https://github.com/Abhinav-Chdhary/claude-commands.git
 cd claude-commands
 
-# Link into your personal commands folder (user scope)
-ln -s "$PWD/commands/endit.md"        ~/.claude/commands/endit.md
-ln -s "$PWD/commands/reviewinator.md" ~/.claude/commands/reviewinator.md
-ln -s "$PWD/commands/standup.md"      ~/.claude/commands/standup.md
+# 2. Make sure your user commands directory exists
+mkdir -p ~/.claude/commands
+
+# 3. Symlink every command into it (run from the repo root)
+for f in commands/*.md; do
+  ln -sf "$PWD/$f" ~/.claude/commands/"$(basename "$f")"
+done
 ```
 
-Or copy them instead of symlinking if you'd rather not track the source:
+### Option B — copy
+
+Simpler, but you'll need to re-copy to pick up future updates.
 
 ```bash
+mkdir -p ~/.claude/commands
 cp commands/*.md ~/.claude/commands/
 ```
 
-Commands are available in any Claude Code session as `/endit` and `/reviewinator`.
+### Verify
 
-### Project scope
+Open a new Claude Code session (or run `/reload-commands` in an existing one) and
+type `/` — you should see `/endit`, `/reviewinator`, and `/standup` in the list.
 
-To make a command available only inside one project, drop it in that project's
-`.claude/commands/` directory instead of `~/.claude/commands/`.
+### Update later
+
+```bash
+cd claude-commands && git pull   # symlink installs are now up to date automatically
+# (copy installs: re-run the cp command above)
+```
+
+### Project scope instead
+
+To make a command available only inside one project, drop the `.md` file in that
+project's `.claude/commands/` directory instead of `~/.claude/commands/`.
 
 ## Usage
 
