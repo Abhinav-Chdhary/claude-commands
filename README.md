@@ -6,9 +6,11 @@ A small collection of custom [Claude Code](https://docs.anthropic.com/en/docs/cl
 
 | Command | Description |
 |---------|-------------|
-| [`/endit`](commands/endit.md) | End-of-session wrap-up — persists deferred plans to `Plans/` and a session log to `Reports/` in the current working directory. |
-| [`/reviewinator`](commands/reviewinator.md) | Reviews your changes (last commit / uncommitted / PR diff), rates them out of 5, flags P0/P1/P2 vulnerabilities, and writes a self-contained HTML report to `Reviews/`. |
-| [`/standup`](commands/standup.md) | Summarizes today's work from git history, filtered/grouped by org. Pass the org name, or omit it and get asked which of the discovered orgs to summarize. |
+| [`/endit`](plugins/endit/commands/endit.md) | End-of-session wrap-up — persists deferred plans to `Plans/` and a session log to `Reports/` in the current working directory. |
+| [`/reviewinator`](plugins/reviewinator/commands/reviewinator.md) | Reviews your changes (last commit / uncommitted / PR diff), rates them out of 5, flags P0/P1/P2 vulnerabilities, and writes a self-contained HTML report to `Reviews/`. |
+| [`/standup`](plugins/standup/commands/standup.md) | Summarizes today's work from git history, filtered/grouped by org. Pass the org name, or omit it and get asked which of the discovered orgs to summarize. |
+
+Each command is published as its own plugin, so you can install all of them or just the one you want.
 
 ## Install
 
@@ -17,15 +19,21 @@ A small collection of custom [Claude Code](https://docs.anthropic.com/en/docs/cl
 ### Option A — plugin (recommended)
 
 This repo is a Claude Code [plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces.md).
-Install everything with two commands inside any Claude Code session — no cloning, no
-symlinks, and `/plugin marketplace update` keeps it current:
+Add it once inside any Claude Code session — no cloning, no symlinks — then install only
+the commands you want. `/plugin marketplace update` keeps them current.
 
 ```text
+# 1. Add the marketplace (one time)
 /plugin marketplace add Abhinav-Chdhary/claude-commands
-/plugin install claude-commands@claude-commands
+
+# 2. Install just the command(s) you want
+/plugin install standup@claude-commands
+/plugin install reviewinator@claude-commands
+/plugin install endit@claude-commands
 ```
 
-That's it — `/endit`, `/reviewinator`, and `/standup` are now available everywhere.
+Each command is a separate plugin, so install one, two, or all three. Prefer a menu?
+Run `/plugin` and browse the `claude-commands` marketplace interactively.
 
 ---
 
@@ -47,10 +55,13 @@ cd claude-commands
 mkdir -p ~/.claude/commands
 
 # 3. Symlink every command into it (run from the repo root)
-for f in commands/*.md; do
+for f in plugins/*/commands/*.md; do
   ln -sf "$PWD/$f" ~/.claude/commands/"$(basename "$f")"
 done
 ```
+
+To install just one, link only its file, e.g.
+`ln -sf "$PWD/plugins/standup/commands/standup.md" ~/.claude/commands/standup.md`.
 
 ### Option C — copy
 
@@ -58,7 +69,7 @@ Simpler, but you'll need to re-copy to pick up future updates.
 
 ```bash
 mkdir -p ~/.claude/commands
-cp commands/*.md ~/.claude/commands/
+cp plugins/*/commands/*.md ~/.claude/commands/
 ```
 
 ### Verify

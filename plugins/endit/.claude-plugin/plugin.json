@@ -1,6 +1,6 @@
 {
-  "name": "claude-commands",
-  "description": "Custom Claude Code slash commands: /endit, /reviewinator, /standup",
+  "name": "endit",
+  "description": "End-of-session wrap-up — persists deferred plans to Plans/ and a session log to Reports/.",
   "version": "1.0.0",
   "author": {
     "name": "Abhinav Choudhary"

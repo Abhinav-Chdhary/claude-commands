@@ -3,12 +3,25 @@
   "owner": {
     "name": "Abhinav Choudhary"
   },
-  "description": "A small collection of custom Claude Code slash commands.",
+  "description": "A small collection of custom Claude Code slash commands. Install all, or just the ones you want.",
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
   "plugins": [
     {
-      "name": "claude-commands",
-      "source": "./",
-      "description": "Custom slash commands: /endit, /reviewinator, /standup"
+      "name": "endit",
+      "source": "endit",
+      "description": "End-of-session wrap-up — persists plans to Plans/ and a session log to Reports/."
+    },
+    {
+      "name": "reviewinator",
+      "source": "reviewinator",
+      "description": "Rates your changes /5 and flags P0/P1/P2 vulnerabilities as an HTML report."
+    },
+    {
+      "name": "standup",
+      "source": "standup",
+      "description": "Summarizes today's work from git history, filtered/grouped by org."
     }
   ]
 }
