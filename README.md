@@ -12,14 +12,29 @@ A small collection of custom [Claude Code](https://docs.anthropic.com/en/docs/cl
 
 ## Install
 
+**Prerequisite:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed.
+
+### Option A — plugin (recommended)
+
+This repo is a Claude Code [plugin marketplace](https://code.claude.com/docs/en/plugin-marketplaces.md).
+Install everything with two commands inside any Claude Code session — no cloning, no
+symlinks, and `/plugin marketplace update` keeps it current:
+
+```text
+/plugin marketplace add Abhinav-Chdhary/claude-commands
+/plugin install claude-commands@claude-commands
+```
+
+That's it — `/endit`, `/reviewinator`, and `/standup` are now available everywhere.
+
+---
+
+The options below are the manual route if you'd rather not use the plugin system.
 Claude Code reads slash commands from Markdown files in a `commands/` directory —
 `~/.claude/commands/` for personal (user-scope) commands available in **every**
 session, or a project's `.claude/commands/` for commands scoped to **one** repo.
-Installing these is just a matter of getting the `.md` files into one of those folders.
 
-**Prerequisite:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed.
-
-### Option A — symlink (recommended)
+### Option B — symlink
 
 Links the files so a `git pull` here instantly updates your installed commands.
 
@@ -37,7 +52,7 @@ for f in commands/*.md; do
 done
 ```
 
-### Option B — copy
+### Option C — copy
 
 Simpler, but you'll need to re-copy to pick up future updates.
 

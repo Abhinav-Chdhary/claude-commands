@@ -1,0 +1,11 @@
+{
+  "name": "claude-commands",
+  "description": "Custom Claude Code slash commands: /endit, /reviewinator, /standup",
+  "version": "1.0.0",
+  "author": {
+    "name": "Abhinav Choudhary"
+  },
+  "homepage": "https://github.com/Abhinav-Chdhary/claude-commands",
+  "repository": "https://github.com/Abhinav-Chdhary/claude-commands",
+  "license": "MIT"
+}

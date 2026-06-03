@@ -1,0 +1,14 @@
+{
+  "name": "claude-commands",
+  "owner": {
+    "name": "Abhinav Choudhary"
+  },
+  "description": "A small collection of custom Claude Code slash commands.",
+  "plugins": [
+    {
+      "name": "claude-commands",
+      "source": "./",
+      "description": "Custom slash commands: /endit, /reviewinator, /standup"
+    }
+  ]
+}
