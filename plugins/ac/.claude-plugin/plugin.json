@@ -1,7 +1,7 @@
 {
-  "name": "endit",
-  "description": "End-of-session wrap-up — persists deferred plans to Plans/ and a session log to Reports/.",
-  "version": "1.0.0",
+  "name": "ac",
+  "description": "Abhinav's custom Claude Code slash commands: /ac:standup, /ac:endit, /ac:reviewinator.",
+  "version": "2.0.0",
   "author": {
     "name": "Abhinav Choudhary"
   },
