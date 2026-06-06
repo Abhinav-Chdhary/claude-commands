@@ -16,7 +16,10 @@ All commands ship in a single plugin named `ac`, so they share the `/ac:` prefix
 
 **Prerequisite:** [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed.
 
-**Quickest route — just ask Claude.** Prompt your Claude to install like this => `install the ac plugin from the Abhinav-Chdhary/claude-commands marketplace`
+**Quickest route — just ask Claude.** Prompt your Claude to install like this => 
+```text
+install the ac plugin from the Abhinav-Chdhary/claude-commands marketplace
+```
 
 ### Option A — plugin (recommended)
 
