@@ -18,6 +18,28 @@ Wrap up the current session. Use the current working directory as the root.
    - **Follow-ups**: links to the Plans files created/updated above.
    - **Commands / verification**: key commands run and their outcomes (build, lint, tests).
 
-3. Create the `Plans/` and `Reports/` directories if they do not exist. Do not overwrite unrelated existing files. Do not commit anything.
+3. **Work-log entry** — append one line to the central journal at `/Users/apple/Documents/MedseeRepos/.context-lab/worklog.jsonl` so future sessions can recall this work (used by `recall.py`). Synthesize the entry from THIS session — you already have the full context, do NOT parse transcripts. Use these exact keys (matching the existing schema):
+   - `date`: today (`YYYY-MM-DD`)
+   - `branch`: current git branch (`git branch --show-current`), or `null`
+   - `title`: short imperative slug of the session's goal (≤60 chars, e.g. `fix-smart-dictation-bugs`)
+   - `first_prompt`: the user's original opening ask this session, verbatim and trimmed
+   - `files_edited`: array of **repo-relative** paths you created/edited (e.g. `medsee-webapp/src/...`); exclude `Plans/`, `Reports/`, `.claude/`, worktree/placeholder copies
+   - `files_read`: array of the few paths *central* to the work — skip incidental reads
+   - `source`: `"endit"`
+
+   Append with python (handles JSON escaping; never rewrite the file):
+   ```bash
+   python3 - <<'PY'
+   import json
+   entry = {"date": "...", "branch": "...", "title": "...",
+            "first_prompt": "...", "files_edited": [...], "files_read": [...],
+            "source": "endit"}
+   with open("/Users/apple/Documents/MedseeRepos/.context-lab/worklog.jsonl", "a") as f:
+       f.write(json.dumps(entry) + "\n")
+   PY
+   ```
+   Keep the prompt/content text in the file only — never echo `first_prompt` to the console (PHI).
+
+4. Create the `Plans/` and `Reports/` directories if they do not exist. Do not overwrite unrelated existing files. Do not commit anything.
 
 Session label (optional): $ARGUMENTS
