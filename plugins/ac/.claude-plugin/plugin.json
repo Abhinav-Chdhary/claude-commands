@@ -1,7 +1,7 @@
 {
   "name": "ac",
-  "description": "Abhinav's custom Claude Code slash commands: /ac:standup, /ac:endit, /ac:reviewinator.",
-  "version": "2.0.0",
+  "description": "Abhinav's custom Claude Code slash commands: /ac:standup, /ac:endit, /ac:reviewinator, /ac:triage.",
+  "version": "2.1.0",
   "author": {
     "name": "Abhinav Choudhary"
   },

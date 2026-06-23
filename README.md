@@ -9,6 +9,7 @@ A small collection of custom [Claude Code](https://docs.anthropic.com/en/docs/cl
 | [`/ac:endit`](plugins/ac/commands/endit.md) | End-of-session wrap-up — persists deferred plans to `Plans/` and a session log to `Reports/` in the current working directory. |
 | [`/ac:reviewinator`](plugins/ac/commands/reviewinator.md) | Reviews your changes (last commit / uncommitted / PR diff), rates them out of 5, flags P0/P1/P2 vulnerabilities, and writes a self-contained HTML report to `Reviews/`. |
 | [`/ac:standup`](plugins/ac/commands/standup.md) | Summarizes today's work from git history, filtered/grouped by org. Pass the org name, or omit it and get asked which of the discovered orgs to summarize. |
+| [`/ac:triage`](plugins/ac/commands/triage.md) | Checks review comments on one or more PRs (pass PR numbers/URLs, or omit to use the current branch's PR), triages them P0/P1/P2, suggests concrete fixes, then offers to apply them. |
 
 All commands ship in a single plugin named `ac`, so they share the `/ac:` prefix once installed.
 
@@ -109,6 +110,10 @@ Plugin installs use the `/ac:` prefix (drop it for manual installs):
 /ac:standup                 # discovers orgs and asks which to summarize
 /ac:standup Abhinav-Chdhary # summarize today's work for a specific org
 /ac:standup all             # every repo, regardless of org
+
+/ac:triage                  # triage the current branch's PR
+/ac:triage 123 124          # triage two specific PRs by number
+/ac:triage https://github.com/org/repo/pull/123
 ```
 
 ## License

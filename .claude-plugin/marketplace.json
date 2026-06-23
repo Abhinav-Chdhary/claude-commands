@@ -8,7 +8,7 @@
     {
       "name": "ac",
       "source": "./plugins/ac",
-      "description": "Custom slash commands: /ac:standup, /ac:endit, /ac:reviewinator."
+      "description": "Custom slash commands: /ac:standup, /ac:endit, /ac:reviewinator, /ac:triage."
     }
   ]
 }
