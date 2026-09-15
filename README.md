@@ -8,6 +8,7 @@ A small collection of custom [Claude Code](https://docs.anthropic.com/en/docs/cl
 |---------|-------------|
 | [`/ac:endit`](plugins/ac/commands/endit.md) | End-of-session wrap-up — persists deferred plans to `Plans/` and a session log to `Reports/` in the current working directory. |
 | [`/ac:reviewinator`](plugins/ac/commands/reviewinator.md) | Reviews your changes (last commit / uncommitted / PR diff), rates them out of 5, flags P0/P1/P2 vulnerabilities, and writes a self-contained HTML report to `Reviews/`. |
+| [`/ac:scratchpad`](plugins/ac/commands/scratchpad.md) | Drains a scratchpad inbox — sorts every note by lifetime into its durable home (facts, numbers, TODOs, repo docs), deletes credentials and stale debris, flags conflicts instead of resolving them. |
 | [`/ac:standup`](plugins/ac/commands/standup.md) | Summarizes today's work from git history, filtered/grouped by org. Pass the org name, or omit it and get asked which of the discovered orgs to summarize. |
 | [`/ac:triage`](plugins/ac/commands/triage.md) | Checks review comments on one or more PRs (pass PR numbers/URLs, or omit to use the current branch's PR), triages them P0/P1/P2, suggests concrete fixes, then offers to apply them. |
 
@@ -36,7 +37,7 @@ Add it once inside any Claude Code session — no cloning, no symlinks — then 
 /plugin install ac@claude-commands
 ```
 
-All commands land under the `/ac:` prefix — `/ac:standup`, `/ac:reviewinator`, `/ac:endit`.
+All commands land under the `/ac:` prefix — `/ac:standup`, `/ac:reviewinator`, `/ac:endit`, `/ac:scratchpad`.
 Prefer a menu? Run `/plugin` and browse the `claude-commands` marketplace interactively.
 
 ---
@@ -114,6 +115,9 @@ Plugin installs use the `/ac:` prefix (drop it for manual installs):
 /ac:triage                  # triage the current branch's PR
 /ac:triage 123 124          # triage two specific PRs by number
 /ac:triage https://github.com/org/repo/pull/123
+
+/ac:scratchpad              # drain the default Docs/CentScratchpad.md
+/ac:scratchpad notes/inbox.md
 ```
 
 ## License
